@@ -1,11 +1,16 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
+// Select the table body
 var tbody = d3.select("tbody");
 
+//Build Function to Build Table
 function buildTable(data) {
+
+  //Clear any existing table
   tbody.html("");
+
+  //Iterate through the data to create all necessary rows
   data.forEach((dataRow) => {
     var row = tbody.append("tr");
     Object.entries(dataRow).forEach(([key, value]) => {
@@ -15,6 +20,7 @@ function buildTable(data) {
 });
 }
 
+//Build the table
 buildTable(tableData);
 
 
@@ -40,13 +46,17 @@ function runEnter() {
   // Get the value property of the input element
   var inputValue = inputElement.property("value");
 
+  //Check that your data is being capture properly
   console.log(inputValue);
   console.log(tableData);
 
+  //Create a new filtered data set
   var filteredData = tableData.filter(dataRow => dataRow.datetime === inputValue);
 
+  //View filtered data
   console.log(filteredData);
 
+//Build table with filtered data
 buildTable(filteredData)
 };
 
