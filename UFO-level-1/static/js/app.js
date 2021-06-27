@@ -25,13 +25,14 @@ buildTable(tableData);
 
 
 // Select the button
-var button = d3.select("#filter-btn");
+var filterbutton = d3.select("#filter-btn");
+var resetbutton = d3.select("#reset-btn")
 
 // Select the form
 var form = d3.select("#form");
 
 // Create event handlers 
-button.on("click", runEnter);
+filterbutton.on("click", runEnter);
 form.on("submit", runEnter);
 
 // Complete the event handler function for the form
@@ -60,3 +61,10 @@ function runEnter() {
 buildTable(filteredData)
 };
 
+//Create reset function
+function resetTable(){
+  tbody.html("")
+  buildTable(tableData)
+};
+
+resetbutton.on("click", resetTable)
